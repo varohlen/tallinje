@@ -1,6 +1,6 @@
 <!-- pages/index.vue -->
 <template>
-    <div>
+    <div class="page-root">
       <NumberLine />
     </div>
   </template>
@@ -16,3 +16,8 @@
   }
   </script>
   
+  <style scoped>
+.page-root {
+  user-select: none;
+}
+</style>
