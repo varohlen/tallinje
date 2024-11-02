@@ -20,7 +20,7 @@
                 }"
                 >
           <Arrow
-            v-if="selectedNumbers[0] == n && selectedNumbers[0] < selectedNumbers[1] && selectedNumbers[0] !== null && selectedNumbers[1] !== null"
+            v-if="selectedNumbers[0] < selectedNumbers[1] && selectedNumbers[0] !== null && selectedNumbers[1] !== null"
             :start="vertical ? [100,25] : [25, 70]"
             :end="vertical ? [100, arrowHeight-25] : [arrowWidth-25, 70]" 
             :roughness="1"
@@ -30,7 +30,7 @@
             :vertical="vertical"
             :strokeColor="'green'"
           />
-          <div v-if="selectedNumbers[0] !== null && selectedNumbers[1] !== null" 
+          <div v-if="selectedNumbers[0] < selectedNumbers[1] && selectedNumbers[0] !== null && selectedNumbers[1] !== null" 
            class="absolute" 
            :style="{
              left: vertical ? '30px' : `${(arrowWidth / 2)}px`, 
@@ -43,6 +43,38 @@
         </span>
       </div>
          </div>
+         <div v-if="selectedNumbers[1] == n" 
+              class="absolute" 
+              :style="{
+              width: vertical ? '200px' : arrowWidth + 'px',
+              height: vertical ? arrowHeight + 'px' : '200px',
+              bottom: vertical ? '0' : 'initial',
+              right: vertical ? '0' : 'initial'
+                }"
+                >
+                <Arrow v-if="selectedNumbers[0] > selectedNumbers[1] && selectedNumbers[0] !== null && selectedNumbers[1] !== null"
+            :start="vertical ? [100,25] : [25, 70]"
+            :end="vertical ? [100, arrowHeight-25] : [arrowWidth-25, 70]" 
+            :roughness="1"
+            :strokeWidth="3"  
+            :width="vertical ? 200 : arrowWidth"  
+            :height="vertical ? arrowHeight : 200" 
+            :vertical="vertical"
+            :strokeColor="'red'"
+          />
+          <div v-if="selectedNumbers[0] > selectedNumbers[1] && selectedNumbers[0] !== null && selectedNumbers[1] !== null" 
+           class="absolute" 
+           :style="{
+             left: vertical ? '30px' : `${(arrowWidth / 2)}px`, 
+             top: vertical ? `${(arrowHeight / 2)+10}px` : '10px',
+             transform: vertical ? 'translateY(-100%)' : 'translateX(-50%)',
+             zIndex: 10,
+           }">
+        <span class="bg-white text-gray-800 p-1 rounded shadow">
+          - {{ Math.abs(selectedNumbers[1] - selectedNumbers[0]) }}
+        </span>
+      </div>
+          </div>
           <div class="flex items-center mx-6">
             <!-- Marker line -->
             <div :class="markerLineClass">
