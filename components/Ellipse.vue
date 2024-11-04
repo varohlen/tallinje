@@ -11,6 +11,7 @@
       height: { type: Number, default: 40 },
       color: { type: String, default: 'blue' },
       strokeWidth: { type: Number, default: 2 },
+      roughness: {type: Number, default: 1},
     },
     mounted() {
       if (process.client) {
@@ -37,7 +38,7 @@
           strokeWidth: this.strokeWidth,
           fill: this.computeFillColor(this.color),
           fillStyle: 'solid', // Makes the fill less rough
-          roughness: 1, 
+          roughness: this.roughness, 
           bowing: 1, 
         });
   
