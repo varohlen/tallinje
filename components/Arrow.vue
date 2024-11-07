@@ -38,8 +38,8 @@ export default {
             const [startX, startY] = this.start;
             const [endX, endY] = this.end;
 
-            const svgWidth = this.width;  // Use the width prop
-            const svgHeight = this.height; // Use the height prop
+            const svgWidth = this.vertical ? 200 : this.width;  // Fixed width for vertical
+            const svgHeight = this.vertical ? this.height : 200; // Fixed height for horizontal
 
             const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
             svg.setAttribute('width', svgWidth);

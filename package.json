@@ -10,6 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@nuxtjs/i18n": "^9.0.0",
     "@nuxtjs/tailwindcss": "^6.12.2",
     "nuxt": "^3.13.2",
     "roughjs": "^4.6.6",

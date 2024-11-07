@@ -7,11 +7,13 @@
   
   <script>
   import NumberLine from '~/components/NumberLine.vue'
+  import Calculator from '~/components/Calculator.vue';
   
   
   export default {
     components: {
-      NumberLine
+      NumberLine,
+      Calculator,
     }
   }
   </script>
